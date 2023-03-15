@@ -1,0 +1,82 @@
+{% extends 'skeleton.html' %}
+
+{% block content %}
+
+{% load static %}
+<section class="breadcrumb">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6">
+          <h1>{{title}}</h1>
+        </div>
+
+        <div class="col-lg-6 col-md-6 col-sm-6">
+          <ul>
+            <li><a href="temasRV.cfm?startRow=1">Temas</a></li>
+            <li><a href="lectura.cfm">Lectura</a></li>
+             <li><a href="diccionario.cfm?startRow=1">Diccionario</a></li>
+             <li><a href="rv.cfm">RV</a></li>
+             <li><a href="preguntas.cfm">Preguntas</a></li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  
+  <div class="clearfix"></div>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12"
+            style="background:white; color: black;border-top-right-radius:25px; margin-top:20px">
+            <article class="latest-post detail">
+                <img src="{% static 'assets/img/bible1.jpg' %}" style="border-top-right-radius:25px;" alt="dummy">
+                <div class="container text-center" style="background:white; color:black;">
+
+                    <nav aria-label="Page navigation example" style="margin-top:10px;">
+                        <ul class="pagination">
+
+                            {% if data_pages.has_previous %}
+                            <li class="page-item"><a class="page-link" href="?page=1">&laquo First</a></li>
+                            <li class="page-item"><a class="page-link"
+                                    href="?page={{data_pages.previous_page_number}}">&laquo Previous</a></li>
+                            {% endif %}
+
+                            <li class="page-item disabled"><a href="#" class="page-link">Page {{ data_pages.number }} of
+                                    {{ data_pages.paginator.num_pages }}</a></li>
+
+                            {% if data_pages.has_next %}
+                            <li class="page-item"><a class="page-link" href="?page={{data_pages.next_page_number}}">Next</a></li>
+                            <li class="page-item"><a class="page-link" href="?page={{data_pages.paginator.num_pages}}">Last &raquo</a></li>
+                            {% endif %}
+
+                        </ul>
+                    </nav>
+                  
+                    <table class="table table-striped">
+
+                        {% for x in data_pages %}
+                        <tr>
+                            <th>{{x.t_titulo}}</th>
+                             
+                        </tr>
+
+                        {% endfor %}
+
+
+                        <table>
+                </div>
+
+            </article>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+{% comment %} has previous:{{dicc.has_previous}}
+has next:{{dicc.has_next}}
+current page:{{dicc.number}}
+pages:{{dicc.paginator.num_pages}}
+previous page number: {{dicc.previous_page_number}}
+{% endcomment %}
