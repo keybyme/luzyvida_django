@@ -11,11 +11,12 @@
         
                 <div class="col-lg-9 col-md-9 col-sm-9">
                   <ul class="sitemap">
-                    <li><a href="https://www.luzyvida.com">HOME</a></li>
-                    <li><a href="https://www.luzyvida.com/temasRV.cfm?startRow=1">TEMAS</a></li>
+                    <li><a href="/">HOME</a></li>
+                    <li><a href="{% url 'temas' %}">TEMAS</a></li>
                     <li><a href="https://www.luzyvida.com/lectura.cfm">LECTURA DE HOY</a></li>
-                    <li><a href="https://www.luzyvida.com/diccionario.cfm?startRow=1">DICCIONARIO</a></li>
-                    <li><a href="https://www.luzyvida.com/random_vers3.cfm?LibroU=0&merindoU=0" target="_blank">JUEGOS</a></li>
+                    <li><a href="{% url 'diccionario' %}">DICCIONARIO</a></li>
+                    <li><a href="{% url 'juego' %}" target="_blank">JUEGOS</a></li>
+                    {% comment %} <li><a href="https://www.luzyvida.com/random_vers3.cfm?LibroU=0&merindoU=0" target="_blank">JUEGOS</a></li> {% endcomment %}
                     
                     <li><a href="#">PREGUNTAS Y PETICIONES</a></li>
                   </ul>
@@ -46,7 +47,6 @@
       <script defer  src="{% static 'assets/jPlayer/jquery.jplayer.min.js' %}"></script> 
       <script defer  src="{% static 'assets/jPlayer/add-on/jplayer.playlist.min.js' %}"></script> 
       <script defer  src="{% static 'assets/js/jquery.vegas.min.js' %}"></script> 
-      <script defer  src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script> 
       <script defer  src="{% static 'assets/js/jquery.calendar-widget.js' %}"></script> 
       <script defer  src="{% static 'assets/js/isotope.js' %}"></script>
       <script defer  src="{% static 'assets/js/main.js' %}"></script>  
@@ -55,3 +55,12 @@
       
       </body>
       </html>
+      <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+      <script>
+        $("#single1").select2({
+          placeholder: "Select a Book",
+          allowClear: true,
+        });
+ 
+      </script>

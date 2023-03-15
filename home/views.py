@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Diccionario, Ltema
+from .models import Diccionario, Ltema, Llibros
 from django.core.paginator import Paginator
 
 def home(request):
@@ -28,3 +28,13 @@ def temas(request):
         'title':'Temas',
     }
     return render(request, 'home/temas.html', context)
+
+def juego(request):
+    libros_list = Llibros.objects.all()
+    context = {'data': libros_list, 'title':'Juego'}
+    result = request.GET.get('choice')
+    if result:
+        print(result)
+        return render(request, 'home/juego.html', context)
+    
+    return render(request, 'home/juego.html', context)

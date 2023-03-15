@@ -6,14 +6,29 @@
         
         <li><a href="https://www.facebook.com/aa2com"><span class="fa fa-facebook"></span></a></li>
         <li><a href="#"><span class="fa fa-twitter"></span></a></li>
-        <li><a href="#"><span class="fa fa-pinterest"></span></a></li>
+
         <li><a href="#"><span class="fa fa-linkedin"></span></a></li>
         <li><a href="#"><span class="fa fa-flickr"></span></a></li>
         <li><a href="#"><span class="fa fa-youtube"></span></a></li>
         <li><a href="#"><span class="fa fa-instagram"></span></a></li>
+  
+        
+         
+        <li><span class="fa fa-user">
+          
+          {% if user.is_authenticated %}
+          <p>welcome, {{user.username}}</p>
+          <a href="{% url 'logout' %}"><span class="fa fa-sign-out"></span></a>
+          {% else %}
+          <li><a href="{% url 'login' %}"><span class="fa fa-sign-in"></span></a></li>
+          {% endif %}
+        </span></li>
       </ul>
     </div>
   </div>
+ 
+  {% comment %} <li><a href="{% url 'password_reset_confirm' %}">password_reset_confirm</a></li> {% endcomment %}
+ 
   <nav class="navbar yamm navbar-default">
     <div class="container">
       <div class="navbar-header">
@@ -33,11 +48,11 @@
           <ul class="nav navbar-nav" style="font-size:.5em">
             <li class="active dropdown"><a href="/">Home <i class="fa fa-caret-right"></i></a>
             </li>
-            <li class="yamm-fw dropdown"><a href="temasRV.cfm?startRow=1" target="_blank">Temas<i class="fa fa-caret-right"></i></a>
+            <li class="yamm-fw dropdown"><a href="{% url 'temas' %}" target="_blank">Temas<i class="fa fa-caret-right"></i></a>
             </li>
             <li class="yamm-fw dropdown"><a href="lectura.cfm" target="_blank">Lectura de Hoy <i class="fa fa-caret-right"></i></a>
             </li>
-            <li class="yamm-fw dropdown"><a href="diccionario.cfm?startRow=1" target="_blank">Diccionario Biblico <i
+            <li class="yamm-fw dropdown"><a href="{% url 'diccionario' %}" target="_blank">Diccionario Biblico <i
                   class="fa fa-caret-right"></i></a>
             </li>
             <li class="yamm-fw dropdown"><a href="RV.cfm?IDcapituloU=1" target="_blank">Reina Valera <i class="fa fa-caret-right"></i></a>
