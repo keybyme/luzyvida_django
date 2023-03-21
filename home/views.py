@@ -3,6 +3,7 @@ from .models import Diccionario, Ltema, Llibros
 from django.core.paginator import Paginator
 
 def home(request):
+    #test
     return render(request, 'home/home.html')
 
 def diccionario(request):
